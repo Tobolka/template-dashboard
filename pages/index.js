@@ -52,7 +52,9 @@ const data = [
   },
 ];
 
-const CustomTooltip = ({ active, payload, label }) => {
+const priaryColor = "#6366F1";
+
+function CustomTooltip({ active, payload, label }) {
   if (active && payload) {
     return (
       <div className="bg-gray-700 shadow-md rounded-lg p-3 text-white w-24">
@@ -63,9 +65,50 @@ const CustomTooltip = ({ active, payload, label }) => {
   }
 
   return null;
-};
+}
 
 function AreaChartRender() {
+  return (
+    <AreaChart
+      width={560}
+      height={250}
+      data={data}
+      margin={{ top: 4, right: 4, left: -22, bottom: 0 }}
+    >
+      <defs>
+        <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="5%" stopColor={priaryColor} stopOpacity={0.5} />
+          <stop offset="95%" stopColor={priaryColor} stopOpacity={0} />
+        </linearGradient>
+      </defs>
+      <XAxis
+        stroke="#94A3B8"
+        fontSize={10}
+        axisLine={false}
+        tickLine={false}
+        dataKey="name"
+      />
+      <YAxis
+        stroke="#94A3B8"
+        fontSize={10}
+        axisLine={false}
+        tickLine={false}
+        dataKey="uv"
+      />
+      <CartesianGrid strokeDasharray="1 2" vertical={false} stroke="#CBD5E1" />
+      <Tooltip content={<CustomTooltip />} cursor={{ stroke: "#E2E8F0" }} />
+      <Area
+        type="monotone"
+        dataKey="uv"
+        stroke={priaryColor}
+        fillOpacity={1}
+        fill="url(#colorUv)"
+      />
+    </AreaChart>
+  );
+}
+
+function BarChartRender() {
   return (
     <AreaChart
       width={560}
@@ -222,9 +265,12 @@ export default function Home() {
       <section className="p-6">
         <h1 className="text-blueGray-600 text-3xl mt-2">Executive Dashboard</h1>
 
-        <div className="flex mt-14">
+        <div className="flex space-x-4 mt-14">
           <Widget>
-            <AreaChartRender />
+            <BarChartRender />
+          </Widget>
+          <Widget>
+            <BarChartRender />
           </Widget>
         </div>
       </section>
