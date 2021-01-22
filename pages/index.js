@@ -182,7 +182,7 @@ function Widget(props) {
 
 export default function Home() {
   return (
-    <div className="bg-gray-50 h-screen flex">
+    <div className="bg-gray-50 flex">
       <nav className="p-6">
         <div className="bg-blueGray-200 w-12 h-12 rounded-full mt-1 mb-12"></div>
         <a
@@ -262,13 +262,22 @@ export default function Home() {
       <section className="p-6">
         <h1 className="text-blueGray-600 text-3xl mt-2">Executive Dashboard</h1>
 
-        <div className="flex space-x-4 mt-14">
-          <Widget>
-            <AreaChartRender />
-          </Widget>
-          <Widget>
-            <BarChartRender />
-          </Widget>
+        <div className="flex flex-col space-y-4 mt-12">
+          <div className="flex flex-row space-x-4">
+            <Widget></Widget>
+            <Widget></Widget>
+            <Widget></Widget>
+            <Widget></Widget>
+            <Widget></Widget>
+          </div>
+          <div className="flex flex-row space-x-4">
+            <Widget>
+              <AreaChartRender />
+            </Widget>
+            <Widget>
+              <BarChartRender />
+            </Widget>
+          </div>
         </div>
       </section>
     </div>
