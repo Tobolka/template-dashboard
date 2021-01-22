@@ -1,5 +1,14 @@
 @import url("https://rsms.me/inter/inter.css");
 
+html,
+body {
+  background-color: #f9fafb;
+}
+
 .number {
   font-feature-settings: "ss01";
+}
+
+.logo{
+  background-color: #053860;
 }
