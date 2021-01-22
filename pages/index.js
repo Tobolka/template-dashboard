@@ -410,7 +410,7 @@ export default function Home() {
             <Widget
               name="Refund rate"
               number="13.69%"
-              diff="3.1%%"
+              diff="3.1%"
               isArrowUp={false}
               isPositive={true}
               previous="2424"
