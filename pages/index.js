@@ -1,6 +1,8 @@
 import {
   AreaChart,
+  BarChart,
   Area,
+  Bar,
   Tooltip,
   CartesianGrid,
   XAxis,
@@ -96,7 +98,10 @@ function AreaChartRender() {
         dataKey="uv"
       />
       <CartesianGrid strokeDasharray="1 2" vertical={false} stroke="#CBD5E1" />
-      <Tooltip content={<CustomTooltip />} cursor={{ stroke: "#E2E8F0" }} />
+      <Tooltip
+        content={<CustomTooltip />}
+        cursor={{ stroke: "#94A3B8", opacity: "0.2" }}
+      />
       <Area
         type="monotone"
         dataKey="uv"
@@ -110,18 +115,13 @@ function AreaChartRender() {
 
 function BarChartRender() {
   return (
-    <AreaChart
+    <BarChart
       width={560}
       height={250}
       data={data}
       margin={{ top: 4, right: 4, left: -22, bottom: 0 }}
+      barCategoryGap={20}
     >
-      <defs>
-        <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="5%" stopColor="#6366F1" stopOpacity={0.5} />
-          <stop offset="95%" stopColor="#6366F1" stopOpacity={0} />
-        </linearGradient>
-      </defs>
       <XAxis
         stroke="#94A3B8"
         fontSize={10}
@@ -138,15 +138,12 @@ function BarChartRender() {
       />
       <CartesianGrid strokeDasharray="1 2" vertical={false} stroke="#CBD5E1" />
 
-      <Tooltip content={<CustomTooltip />} cursor={{ stroke: "#E2E8F0" }} />
-      <Area
-        type="monotone"
-        dataKey="uv"
-        stroke="#6366F1"
-        fillOpacity={1}
-        fill="url(#colorUv)"
+      <Tooltip
+        content={<CustomTooltip />}
+        cursor={{ fill: "#94A3B8", opacity: "0.2" }}
       />
-    </AreaChart>
+      <Bar dataKey="uv" fill={priaryColor} radius={2} />
+    </BarChart>
   );
 }
 
@@ -267,7 +264,7 @@ export default function Home() {
 
         <div className="flex space-x-4 mt-14">
           <Widget>
-            <BarChartRender />
+            <AreaChartRender />
           </Widget>
           <Widget>
             <BarChartRender />
