@@ -409,17 +409,17 @@ export default function Home() {
 
           <div className="flex flex-row space-x-4">
             <Widget
-              name="Sessions"
-              number="$2231.2"
+              name="Churn rate"
+              number="4.2%"
               diff="28%"
               isArrowUp={true}
-              isPositive={false}
+              isPositive={true}
             >
               <AreaChartRender />
             </Widget>
             <Widget
-              name="Sessions"
-              number="$2231.2"
+              name="Total orders"
+              number="333,730"
               diff="28%"
               isArrowUp={false}
               isPositive={false}
@@ -428,7 +428,7 @@ export default function Home() {
             </Widget>
           </div>
           <div className="flex flex-row space-x-4">
-            <Widget name="Sessions">
+            <Widget name="MRR">
               <LineChartRender />
             </Widget>
             <Widget name="Sessions">
