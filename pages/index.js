@@ -215,7 +215,7 @@ const renderLegend = (props) => {
         <div className="mr-20" key={index}>
           <span
             style={{ backgroundColor: entry.color }}
-            className="w-3 h-3 rounded-full bg-red-100 inline-block"
+            className="w-2 h-2 rounded-full bg-red-100 inline-block"
           ></span>
           <span className="text-blueGray-400 text-xs ml-3 ">{entry.value}</span>
           <span className="text-blueGray-500 text-xs ml-5 text-right w-10 inline-block">
