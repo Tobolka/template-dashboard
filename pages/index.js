@@ -57,7 +57,7 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div className="bg-gray-700 shadow-md rounded-lg p-3 text-white w-24">
         <p className="text-xs mb-2 text-blueGray-100">{label}</p>
-        <p className="text-xs">${payload[0].value}</p>
+        <p className="text-sm">${payload[0].value}</p>
       </div>
     );
   }
