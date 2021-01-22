@@ -12,6 +12,7 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
+  Legend,
 } from "recharts";
 
 import Image from "next/image";
@@ -68,8 +69,25 @@ function CustomTooltip({ active, payload, label }) {
   if (active && payload) {
     return (
       <div className="bg-gray-700 shadow-md rounded-lg p-3 text-white w-24">
-        <p className="text-xs mb-2 text-blueGray-100">{label}</p>
-        <p className="text-sm">${payload[0].value}</p>
+        {label && <p className="text-xs mb-2 text-blueGray-100">{label}</p>}
+
+        <p className="text-sm">{payload[0].value}</p>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function CustomTooltipPie({ active, payload, label }) {
+  if (active && payload) {
+    return (
+      <div className="bg-gray-700 shadow-md rounded-lg p-3 text-white w-24">
+        {payload[0].name && (
+          <p className="text-xs mb-2 text-blueGray-100">{payload[0].name}</p>
+        )}
+
+        <p className="text-sm">{payload[0].value}</p>
       </div>
     );
   }
@@ -188,6 +206,26 @@ function LineChartRender() {
     </LineChart>
   );
 }
+const renderLegend = (props) => {
+  const { payload } = props;
+
+  return (
+    <div>
+      {payload.map((entry, index) => (
+        <div className="mr-20" key={index}>
+          <span
+            style={{ backgroundColor: entry.color }}
+            className="w-3 h-3 rounded-full bg-red-100 inline-block"
+          ></span>
+          <span className="text-blueGray-400 text-xs ml-3 ">{entry.value}</span>
+          <span className="text-blueGray-500 text-xs ml-5 text-right w-10 inline-block">
+            {Math.round(entry.payload.percent * 100)}%
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 function DonutChartRender() {
   return (
@@ -196,9 +234,12 @@ function DonutChartRender() {
       height={250}
       margin={{ top: 4, right: 4, left: -22, bottom: 0 }}
     >
-      <Tooltip
-        content={<CustomTooltip />}
-        cursor={{ fill: "#94A3B8", opacity: "0.2" }}
+      <Tooltip content={<CustomTooltipPie />} />
+      <Legend
+        verticalAlign="middle"
+        align="right"
+        layout="vertical"
+        content={renderLegend}
       />
       <Pie
         data={data}
