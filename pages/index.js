@@ -172,10 +172,10 @@ function Widget(props) {
           93.9%
         </span>
       </div>
-      <div className="text-xs text-blueGray-400 font-light number mb-6">
+      <div className="text-xs text-blueGray-400 font-light number ">
         $2,134,124 same period last month
       </div>
-      <div>{props.children}</div>
+      {props.children && <div className="mt-6">{props.children}</div>}
     </div>
   );
 }
