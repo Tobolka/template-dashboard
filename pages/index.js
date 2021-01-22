@@ -14,6 +14,8 @@ import {
   YAxis,
 } from "recharts";
 
+import Image from "next/image";
+
 const data = [
   {
     name: "Page A",
@@ -216,35 +218,69 @@ function DonutChartRender() {
   );
 }
 
-function Widget(props) {
+function Arrow({ isArrowUp }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      {isArrowUp ? (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        />
+      ) : (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+        />
+      )}
+    </svg>
+  );
+}
+
+function Widget({
+  children,
+  name,
+  number,
+  diff,
+  isArrowUp,
+  isPositive,
+  previous,
+}) {
   return (
     <div className="bg-white p-4 rounded-md shadow flex-grow">
-      <div className="text-blueGray-600 font-light mb-3">Sessions</div>
+      <div className="text-blueGray-600 font-light mb-3">{name}</div>
       <div className="mb-3">
-        <span className="text-2xl font-medium number">$630.44</span>
-        <span className="text-rose-400 font-light ml-2 number">
-          <span className="inline-block w-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
+        <span className="text-2xl font-medium number">{number}</span>
+        {diff && (
+          <span
+            className={
+              "font-light ml-2 number " +
+              (isPositive ? "text-green-400" : "text-rose-400")
+            }
+          >
+            <span className="inline-block w-3">
+              <Arrow isArrowUp={isArrowUp} />
+            </span>
+            {diff}
           </span>
-          93.9%
-        </span>
+        )}
       </div>
-      <div className="text-xs text-blueGray-400 font-light number ">
-        <span className="text-blueGray-500">$2,134,124</span> in previous period
-      </div>
-      {props.children && <div className="mt-6">{props.children}</div>}
+
+      {previous && (
+        <div className="text-xs text-blueGray-400 font-light number ">
+          <span className="text-blueGray-500">{previous}</span> in previous
+          period
+        </div>
+      )}
+      {children && <div className="mt-6">{children}</div>}
     </div>
   );
 }
@@ -254,7 +290,9 @@ export default function Home() {
     <div className="bg-gray-50 flex">
       <nav className="p-6">
         <div className="sticky top-7">
-          <div className="logo w-12 h-12 rounded-full mt-1 mb-12"></div>
+          <div className="logo w-12 h-12 rounded-full mt-1 mb-12 pt-1 p-1">
+            <Image src="/logo.png" alt="brainable" width={40} height={40} />
+          </div>
           <a
             href="#"
             className="bg-indigo-600 text-indigo-50 p-3 rounded-xl mb-2 block"
@@ -330,35 +368,70 @@ export default function Home() {
         </div>
       </nav>
       <section className="p-6 mx-auto">
-        <h1 className="text-blueGray-800 text-3xl mt-2 font-semibold">
+        <h1 className="text-blueGray-800 text-3xl mt-3 font-semibold">
           Executive Dashboard
         </h1>
         <div className="flex flex-col space-y-4 mt-12">
           <div className="flex flex-row space-x-4">
-            <Widget></Widget>
-            <Widget></Widget>
-            <Widget></Widget>
-            <Widget></Widget>
+            <Widget
+              name="Total subscribers"
+              number="23,395"
+              diff="2.1%"
+              isArrowUp={false}
+              isPositive={false}
+              previous="24,221"
+            ></Widget>
+            <Widget
+              name="Refund rate"
+              number="13.69%"
+              diff="3.1%%"
+              isArrowUp={false}
+              isPositive={true}
+              previous="2424"
+            ></Widget>
+            <Widget
+              name="Net revenue"
+              number="$194,573.00"
+              diff="5.2%%"
+              isArrowUp={true}
+              isPositive={false}
+              previous="$189,231.22"
+            ></Widget>{" "}
+            <Widget
+              name="Successful payments"
+              number="6,642"
+              diff="4.8%"
+              isArrowUp={true}
+              isPositive={false}
+              previous="6,452"
+            ></Widget>
           </div>
+
           <div className="flex flex-row space-x-4">
-            <Widget></Widget>
-            <Widget></Widget>
-            <Widget></Widget>
-            <Widget></Widget>
-          </div>
-          <div className="flex flex-row space-x-4">
-            <Widget>
+            <Widget
+              name="Sessions"
+              number="$2231.2"
+              diff="28%"
+              isArrowUp={true}
+              isPositive={false}
+            >
               <AreaChartRender />
             </Widget>
-            <Widget>
+            <Widget
+              name="Sessions"
+              number="$2231.2"
+              diff="28%"
+              isArrowUp={false}
+              isPositive={false}
+            >
               <BarChartRender />
             </Widget>
           </div>
           <div className="flex flex-row space-x-4">
-            <Widget>
+            <Widget name="Sessions">
               <LineChartRender />
             </Widget>
-            <Widget>
+            <Widget name="Sessions">
               <DonutChartRender />
             </Widget>
           </div>
