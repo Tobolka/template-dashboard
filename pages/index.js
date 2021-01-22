@@ -206,7 +206,7 @@ function DonutChartRender() {
         nameKey="name"
         cx="50%"
         cy="50%"
-        innerRadius={70}
+        innerRadius={65}
         outerRadius={100}
         fill={priaryColor}
       >
@@ -215,6 +215,32 @@ function DonutChartRender() {
         ))}
       </Pie>
     </PieChart>
+  );
+}
+
+function TableRender() {
+  return (
+    <table className="table-auto w-full border-collapse">
+      <thead>
+        <tr className="text-xs  text-blueGray-400 h-8">
+          <th className="text-left font-medium">Next Billing Date</th>
+          <th className="text-right font-medium">Subscriptions</th>
+          <th className="text-right font-medium">Total Forecast</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((entry, index) => (
+          <tr
+            key={index}
+            className="text-xs text-blueGray-700 border-t border-t-1 border-blueGray-300 border-dotted h-8"
+          >
+            <td className="text-left">{entry.name}</td>
+            <td className="text-right">{entry.uv}</td>
+            <td className="text-right">{entry.pv}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
@@ -433,6 +459,11 @@ export default function Home() {
             </Widget>
             <Widget name="Sessions">
               <DonutChartRender />
+            </Widget>
+          </div>
+          <div className="flex flex-row space-x-4">
+            <Widget name="Page Organic Impressions">
+              <TableRender />
             </Widget>
           </div>
         </div>
