@@ -418,7 +418,7 @@ export default function Home() {
             <Widget
               name="Net revenue"
               number="$194,573.00"
-              diff="5.2%%"
+              diff="5.2%"
               isArrowUp={true}
               isPositive={false}
               previous="$189,231.22"
