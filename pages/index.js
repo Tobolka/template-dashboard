@@ -1,4 +1,3 @@
-import Head from "next/head";
 import {
   AreaChart,
   Area,
@@ -7,6 +6,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+
 const data = [
   {
     name: "Page A",
@@ -51,6 +51,19 @@ const data = [
     amt: 2100,
   },
 ];
+
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload) {
+    return (
+      <div className="bg-gray-700 shadow-md rounded-lg p-3 text-white w-24">
+        <p className="text-xs mb-2 text-blueGray-100">{label}</p>
+        <p className="text-xs">${payload[0].value}</p>
+      </div>
+    );
+  }
+
+  return null;
+};
 
 export default function Home() {
   return (
@@ -166,22 +179,39 @@ export default function Home() {
                 width={560}
                 height={250}
                 data={data}
-                margin={{ top: 4, right: 4, left: -20, bottom: 0 }}
+                margin={{ top: 4, right: 4, left: -22, bottom: 0 }}
               >
                 <defs>
                   <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#6366F1" stopOpacity={0.8} />
+                    <stop offset="5%" stopColor="#6366F1" stopOpacity={0.5} />
                     <stop offset="95%" stopColor="#6366F1" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis stroke="#94A3B8" fontSize={10} axisLine={false} tickLine={false} />
-                <YAxis stroke="#94A3B8" fontSize={10} axisLine={false} tickLine={false} />
+                <XAxis
+                  stroke="#94A3B8"
+                  fontSize={10}
+                  axisLine={false}
+                  tickLine={false}
+                  dataKey="name"
+                  
+                />
+                <YAxis
+                  stroke="#94A3B8"
+                  fontSize={10}
+                  axisLine={false}
+                  tickLine={false}
+                  dataKey="uv"
+                />
                 <CartesianGrid
                   strokeDasharray="1 2"
                   vertical={false}
                   stroke="#CBD5E1"
                 />
-                <Tooltip cursor={{ stroke: '#E2E8F0',}} />
+
+                <Tooltip
+                  content={<CustomTooltip />}
+                  cursor={{ stroke: "#E2E8F0" }}
+                />
                 <Area
                   type="monotone"
                   dataKey="uv"
