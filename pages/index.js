@@ -281,7 +281,7 @@ function Widget({
   previous,
 }) {
   return (
-    <div className="bg-white p-4 rounded-md shadow flex-grow">
+    <div className="bg-white p-4 rounded-md shadow flex-1 flex-grow">
       <div className="text-blueGray-600 font-light mb-3">{name}</div>
       <div className="mb-3">
         <span className="text-2xl font-medium number">{number}</span>
