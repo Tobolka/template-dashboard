@@ -1,5 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 .number {
-  font-feature-settings: "ss01" on;
+  font-feature-settings: "ss01";
 }
