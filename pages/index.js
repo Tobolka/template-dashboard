@@ -208,7 +208,6 @@ function LineChartRender() {
 }
 const renderLegend = (props) => {
   const { payload } = props;
-
   return (
     <div>
       {payload.map((entry, index) => (
@@ -362,7 +361,7 @@ export default function Home() {
           </div>
           <a
             href="#"
-            className="bg-indigo-600 text-indigo-50 p-3 rounded-xl mb-2 block"
+            className="bg-indigo-100 text-indigo-500 p-3 rounded-xl mb-2 block"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
