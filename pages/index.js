@@ -65,6 +65,81 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
+function AreaChartRender() {
+  return (
+    <AreaChart
+      width={560}
+      height={250}
+      data={data}
+      margin={{ top: 4, right: 4, left: -22, bottom: 0 }}
+    >
+      <defs>
+        <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="5%" stopColor="#6366F1" stopOpacity={0.5} />
+          <stop offset="95%" stopColor="#6366F1" stopOpacity={0} />
+        </linearGradient>
+      </defs>
+      <XAxis
+        stroke="#94A3B8"
+        fontSize={10}
+        axisLine={false}
+        tickLine={false}
+        dataKey="name"
+      />
+      <YAxis
+        stroke="#94A3B8"
+        fontSize={10}
+        axisLine={false}
+        tickLine={false}
+        dataKey="uv"
+      />
+      <CartesianGrid strokeDasharray="1 2" vertical={false} stroke="#CBD5E1" />
+
+      <Tooltip content={<CustomTooltip />} cursor={{ stroke: "#E2E8F0" }} />
+      <Area
+        type="monotone"
+        dataKey="uv"
+        stroke="#6366F1"
+        fillOpacity={1}
+        fill="url(#colorUv)"
+      />
+    </AreaChart>
+  );
+}
+
+function Widget(props) {
+  return (
+    <div className="bg-white p-4 rounded-md shadow">
+      <div className="text-blueGray-600 font-light mb-2">Sessions</div>
+      <div className="mb-2">
+        <span className="text-2xl font-medium number">$630.44</span>
+        <span className="text-rose-400 font-light ml-2 number">
+          <span className="inline-block w-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </span>
+          93.9%
+        </span>
+      </div>
+      <div className="text-xs text-blueGray-400 font-light number mb-6">
+        $2,134,124 same period last month
+      </div>
+      <div>{props.children}</div>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="bg-gray-50 h-screen flex">
@@ -140,6 +215,7 @@ export default function Home() {
               strokeWidth={2}
               d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"
             />
+            š
           </svg>
         </a>
       </nav>
@@ -147,81 +223,9 @@ export default function Home() {
         <h1 className="text-blueGray-600 text-3xl mt-2">Executive Dashboard</h1>
 
         <div className="flex mt-14">
-          {/* Widget 1 */}
-          <div className="bg-white p-4 rounded-md shadow">
-            <div className="text-blueGray-600 font-light mb-2">Sessions</div>
-            <div className="mb-2">
-              <span className="text-2xl font-medium number">$630.44</span>
-              <span className="text-rose-400 font-light ml-2 number">
-                <span className="inline-block w-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                    />
-                  </svg>
-                </span>
-                93.9%
-              </span>
-            </div>
-            <div className="text-xs text-blueGray-400 font-light number mb-6">
-              $2,134,124 same period last month
-            </div>
-            <div>
-              <AreaChart
-                width={560}
-                height={250}
-                data={data}
-                margin={{ top: 4, right: 4, left: -22, bottom: 0 }}
-              >
-                <defs>
-                  <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#6366F1" stopOpacity={0.5} />
-                    <stop offset="95%" stopColor="#6366F1" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <XAxis
-                  stroke="#94A3B8"
-                  fontSize={10}
-                  axisLine={false}
-                  tickLine={false}
-                  dataKey="name"
-                  
-                />
-                <YAxis
-                  stroke="#94A3B8"
-                  fontSize={10}
-                  axisLine={false}
-                  tickLine={false}
-                  dataKey="uv"
-                />
-                <CartesianGrid
-                  strokeDasharray="1 2"
-                  vertical={false}
-                  stroke="#CBD5E1"
-                />
-
-                <Tooltip
-                  content={<CustomTooltip />}
-                  cursor={{ stroke: "#E2E8F0" }}
-                />
-                <Area
-                  type="monotone"
-                  dataKey="uv"
-                  stroke="#6366F1"
-                  fillOpacity={1}
-                  fill="url(#colorUv)"
-                />
-              </AreaChart>
-            </div>
-          </div>
+          <Widget>
+            <AreaChartRender />
+          </Widget>
         </div>
       </section>
     </div>
