@@ -393,7 +393,7 @@ export default function Home() {
           </a>
         </div>
       </nav>
-      <section className="p-6 mx-auto">
+      <section className="p-6 mx-auto mb-10">
         <h1 className="text-blueGray-800 text-3xl mt-3 font-semibold">
           Executive Dashboard
         </h1>
