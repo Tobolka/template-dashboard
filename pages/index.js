@@ -1,8 +1,10 @@
 import {
   AreaChart,
   BarChart,
+  LineChart,
   Area,
   Bar,
+  Line,
   Tooltip,
   CartesianGrid,
   XAxis,
@@ -147,6 +149,39 @@ function BarChartRender() {
   );
 }
 
+function LineChartRender() {
+  return (
+    <LineChart
+      width={560}
+      height={250}
+      data={data}
+      margin={{ top: 4, right: 4, left: -22, bottom: 0 }}
+    >
+      <XAxis
+        stroke="#94A3B8"
+        fontSize={10}
+        axisLine={false}
+        tickLine={false}
+        dataKey="name"
+      />
+      <YAxis
+        stroke="#94A3B8"
+        fontSize={10}
+        axisLine={false}
+        tickLine={false}
+        dataKey="uv"
+      />
+      <CartesianGrid strokeDasharray="1 2" vertical={false} stroke="#CBD5E1" />
+
+      <Tooltip
+        content={<CustomTooltip />}
+        cursor={{ fill: "#94A3B8", opacity: "0.2" }}
+      />
+      <Line dataKey="uv" dot={false} strokeWidth={2} stroke={priaryColor} />
+    </LineChart>
+  );
+}
+
 function Widget(props) {
   return (
     <div className="bg-white p-4 rounded-md shadow">
@@ -276,6 +311,11 @@ export default function Home() {
             </Widget>
             <Widget>
               <BarChartRender />
+            </Widget>
+          </div>
+          <div className="flex flex-row space-x-4">
+            <Widget>
+              <LineChartRender />
             </Widget>
           </div>
         </div>
