@@ -64,7 +64,6 @@ const data = [
   },
 ];
 
-
 // Colors from https://tailwindcss.com/docs/customizing-colors
 const priaryColor = "#6366F1";
 const secondaryColor ="#A5B4FC";
