@@ -65,6 +65,7 @@ const data = [
 ];
 
 const priaryColor = "#6366F1";
+const secondaryColor ="#A5B4FC";
 const COLORS = ["#6366F1", "#818CF8", "#A5B4FC", "#C7D2FE", "#E0E7FF"];
 
 function CustomTooltip({ active, payload, label }) {
@@ -107,8 +108,8 @@ function AreaChartRender() {
     >
       <defs>
         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="5%" stopColor={priaryColor} stopOpacity={0.5} />
-          <stop offset="95%" stopColor={priaryColor} stopOpacity={0} />
+          <stop offset="5%" stopColor={secondaryColor} stopOpacity={0.5} />
+          <stop offset="95%" stopColor={secondaryColor} stopOpacity={0} />
         </linearGradient>
       </defs>
       <XAxis
