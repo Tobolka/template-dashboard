@@ -131,7 +131,6 @@ function AreaChartRender() {
         cursor={{ stroke: "#94A3B8", opacity: "0.2" }}
       />
       <Area
-      
         dataKey="uv"
         stroke={priaryColor}
         fillOpacity={1}
