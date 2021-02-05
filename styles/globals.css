@@ -12,3 +12,9 @@ body {
 .logo {
   background-color: #053860;
 }
+
+.tooltip {
+  opacity: 1 !important;
+  border-radius: 6px !important;
+  padding: 5px 8px!important;
+}

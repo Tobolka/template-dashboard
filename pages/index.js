@@ -15,6 +15,8 @@ import {
   Legend,
 } from "recharts";
 
+import ReactTooltip from "react-tooltip";
+
 import Image from "next/image";
 
 const data = [
@@ -324,7 +326,7 @@ function Widget({
     <div className="bg-white p-4 rounded-md shadow flex-1 flex-grow">
       <div className="text-blueGray-600 font-light mb-3">{name}</div>
       <div className="mb-3">
-        <span className="text-2xl font-medium number">{number}</span>
+        <span className="text-2xl font-bold number">{number}</span>
         {diff && (
           <span
             className={
@@ -354,6 +356,13 @@ function Widget({
 export default function Home() {
   return (
     <div className="bg-gray-50 flex">
+      <ReactTooltip
+        place="right"
+        effect="solid"
+        className="tooltip"
+        backgroundColor="#1E293B"
+        textColor="#fafafa"
+      />
       <nav className="p-6">
         <div className="sticky top-7">
           <div className="logo w-12 h-12 rounded-full mt-1 mb-12 pt-1 p-1">
@@ -362,6 +371,7 @@ export default function Home() {
           <a
             href="#"
             className="bg-indigo-100 text-indigo-500 p-3 rounded-xl mb-2 block"
+            data-tip="Executive Dashboard"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -380,6 +390,7 @@ export default function Home() {
           <a
             href="#"
             className="p-3 hover:bg-purple-100 text-purple-500 rounded-xl mb-2 block"
+            data-tip="Marketing"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -398,6 +409,7 @@ export default function Home() {
           <a
             href="#"
             className="p-3 hover:bg-lightBlue-100 text-lightBlue-500 rounded-xl mb-2 block"
+            data-tip="Customer Service"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -416,6 +428,7 @@ export default function Home() {
           <a
             href="#"
             className="p-3 hover:bg-pink-100 rounded-xl text-pink-500  mb-2 block"
+            data-tip="Gateway Report"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
