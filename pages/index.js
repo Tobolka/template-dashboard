@@ -134,7 +134,7 @@ function AreaChartRender() {
         stroke={priaryColor}
         fillOpacity={1}
         fill="url(#colorUv)"
-        strokeWidth={1.5}
+        strokeWidth={3}
       />
     </AreaChart>
   );
@@ -202,7 +202,7 @@ function LineChartRender() {
         content={<CustomTooltip />}
         cursor={{ fill: "#94A3B8", opacity: "0.2" }}
       />
-      <Line dataKey="uv" dot={false} strokeWidth={1.5} stroke={priaryColor} />
+      <Line dataKey="uv" dot={false} strokeWidth={3} stroke={priaryColor} />
     </LineChart>
   );
 }
