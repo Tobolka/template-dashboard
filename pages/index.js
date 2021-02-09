@@ -366,8 +366,8 @@ export default function Home() {
       />
       <nav className="p-6">
         <div className="sticky top-7">
-          <div className="logo w-12 h-12 rounded-full mt-1 mb-12 pt-1 p-1">
-            <Image src="/logo.png" alt="brainable" width={40} height={40} />
+          <div className="w-12 h-12 rounded-full mt-1 mb-12 pt-1 p-1 bg-gray-100">
+           
           </div>
           <a
             href="#"
