@@ -66,7 +66,7 @@ const data = [
 
 // Colors from https://tailwindcss.com/docs/customizing-colors
 const priaryColor = "#6366F1";
-const secondaryColor ="#A5B4FC";
+const secondaryColor = "#A5B4FC";
 const COLORS = ["#6366F1", "#818CF8", "#A5B4FC", "#C7D2FE", "#E0E7FF"];
 
 function CustomTooltip({ active, payload, label }) {
@@ -74,7 +74,6 @@ function CustomTooltip({ active, payload, label }) {
     return (
       <div className="bg-gray-700 shadow-md rounded-lg p-3 text-white w-24">
         {label && <p className="text-xs mb-2 text-blueGray-100">{label}</p>}
-
         <p className="text-sm">{payload[0].value}</p>
       </div>
     );
@@ -366,9 +365,7 @@ export default function Home() {
       />
       <nav className="p-6">
         <div className="sticky top-7">
-          <div className="w-12 h-12 rounded-full mt-1 mb-12 pt-1 p-1 bg-gray-100">
-           
-          </div>
+          <div className="w-12 h-12 rounded-full mt-1 mb-12 pt-1 p-1 bg-gray-100"></div>
           <a
             href="#"
             className="bg-indigo-100 text-indigo-500 p-3 rounded-xl mb-2 block"
